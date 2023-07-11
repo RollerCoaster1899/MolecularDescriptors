@@ -1,9 +1,22 @@
-# MolecularDescriptors
-Calculate molecular descriptors based on SMILES structure
-This code is installing the padelpy library using pip and then using it to calculate molecular fingerprints for molecules in a CSV file named "fda.csv". The calculated fingerprints are then saved in another CSV file named "Molecular-fingerprint-FDA.csv".
+# QSAR
+1. Importing necessary libraries: The code imports several libraries such as NumPy, ChemBL API, Pandas, RDKit, scikit-learn, and matplotlib. These libraries provide functionality for data manipulation, molecular analysis, machine learning, and data visualization.
 
-The code first imports the required libraries - pandas and padelpy. It then reads the CSV file "fda.csv" using pandas' read_csv() function and stores it in a variable called "df". The next few lines of code calculate molecular descriptors for a single molecule (the one in the first row of the "df" dataframe), using the from_smiles() function from the padelpy library. The resulting descriptors are then saved in a pandas dataframe called "descriptors".
+2. Defining functions for data retrieval and model building:
+   - `target_retrieval(search)`: Retrieves information about a target from ChemBL API based on a search term.
+   - `target_info_retrieval(search)`: Retrieves activity data for a specific target from ChemBL API.
+   - `build_qsar_model(data)`: Cleans the activity data, calculates pIC50 values, generates molecular fingerprints, and constructs a QSAR (Quantitative Structure-Activity Relationship) model using the Random Forest algorithm.
+   - `evaluate_molecule(mol_smiles, model)`: Predicts the pIC50 value for a given molecule using the trained QSAR model.
 
-The code then adds two columns to the "descriptors" dataframe, one for the SMILES string of the molecule and one for its zinc_id. The next few lines of code reorder the columns of the "descriptors" dataframe and save it in a new CSV file named "Molecular-fingerprint-FDA.csv".
+3. Defining additional utility functions:
+   - `plot_predicted_vs_real(y_test, y_pred)`: Generates a scatter plot comparing the predicted pIC50 values to the real pIC50 values.
+   - `identify_pharmacophores(feature_importance, fingerprint_columns, threshold)`: Identifies important pharmacophores (fingerprint features) based on their feature importance values.
+   - `draw_molecule(smiles)`: Draws a molecule using its SMILES string representation.
 
-Finally, the code loops over all the molecules in the "df" dataframe and calculates the molecular descriptors for each molecule using the from_smiles() function. The resulting descriptors are then saved in the "Molecular-fingerprint-FDA.csv" file, along with the SMILES string and zinc_id of each molecule. The progress of the loop is printed out after each iteration.
+4. Example usage:
+   - Retrieves target information and activity data for a given search term.
+   - Builds a QSAR model using the activity data.
+   - Evaluates a molecule using the trained model and prints the predicted pIC50 value.
+   - Prints target information and activity data.
+   - Generates a plot comparing the predicted and real pIC50 values.
+
+This code provides a basic framework for retrieving target information, building QSAR models, and evaluating molecules using molecular fingerprints. It also includes utility functions for data visualization and identifying important pharmacophores.
