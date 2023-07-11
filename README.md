@@ -1,4 +1,4 @@
-# QSAR
+# Quantitative Structure Activity Relationship
 1. Importing necessary libraries: The code imports several libraries such as NumPy, ChemBL API, Pandas, RDKit, scikit-learn, and matplotlib. These libraries provide functionality for data manipulation, molecular analysis, machine learning, and data visualization.
 
 2. Defining functions for data retrieval and model building:
